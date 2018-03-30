@@ -1,0 +1,22 @@
+\documentclass[12pt, letterpaper]{report}
+
+\usepackage{thesis}
+
+\begin{document}
+    \pagenumbering{roman}
+    \input{./chapter/cover}
+    \input{./chapter/abstract}
+    \input{./chapter/dedication}
+    \input{./chapter/acknowledgement}
+    \input{./chapter/contents}
+    \input{./chapter/abbreviations}
+
+    \pagenumbering{arabic}
+    \include{./chapter/introduction}
+    \include{./chapter/guidelines}
+
+    \include{./chapter/biblio}
+    \appendix
+    \appendixpage
+    \include{./chapter/appa}
+\end{document}

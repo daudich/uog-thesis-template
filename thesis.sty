@@ -1,0 +1,95 @@
+% =============================================================================================================
+% SETTING BASIC PACKAGE AND COMPILATION SETTINGS
+% =============================================================================================================
+
+% Declare that this style file requires at least LaTeX version 2e.
+\NeedsTeXFormat{LaTeX2e}
+
+% Provide the name of your page, the date it was last updated, and a comment about what it's used for
+\ProvidesPackage{my_masters}[2018/03/30 Dhiren's LaTeX style for University of Guelph MSc. Thesis]
+
+\usepackage{iftex}
+\ifPDFTeX % Compile with PDFLaTex for best results.
+    % For fontenc and inputenc, order is important. See: https://tex.stackexchange.com/q/44694
+    \usepackage[T1]{fontenc} % Output font encoding for international characters
+    \usepackage[utf8]{inputenc} % Required for inputting international characters
+    \usepackage{lmodern} % Setting font to use.
+\else
+    \ifXeTeX
+        \usepackage{fontspec}
+    \else
+        \usepackage{luatextra}
+   \fi
+   \defaultfontfeatures{Ligatures=TeX}
+\fi
+
+% =============================================================================================================
+% PAGE SETUP
+% =============================================================================================================
+
+\usepackage[margin=1in]{geometry} % Setting the margins
+\usepackage[document]{ragged2e} % This packages makes all of the text left-justified
+
+\usepackage{setspace} % Setting line spacing
+\singlespacing
+%\onehalfspacing % Recommended for submitting work for feedback
+%\doublespacing
+
+% Stying paragraphs
+\usepackage{indentfirst} % Make the first line of all sections etc., be indented by the usual paragraph indentation. This should work with all the standard document classes.
+\usepackage{parskip} % Put a line between all the paragraphs.
+
+% =============================================================================================================
+% BASIC PACKAGES
+% =============================================================================================================
+
+\usepackage{url} % This package is used for adding URL support; especially helpful for determining line-breaks for long URLs.
+\usepackage{xcolor} % Adding colour support for: background, fonts, lines, etc.
+\usepackage{appendix} % This package provides the appedix environment which is more advanced than just the \appendix mode: http://www.tex.ac.uk/FAQ-appendix.html
+\usepackage{amsmath,amssymb,amstext} % Lots of math symbols and environments
+\usepackage{hyperref} % Provides support for in/out document cross-referencing. Makes your thesis more useful.
+\usepackage[nottoc]{tocbibind} % Add bibliography and the table of figures to the ToC
+
+% =============================================================================================================
+% ADDITIONAL PACKAGES
+% =============================================================================================================
+
+\usepackage{enumerate} % For enumerating with roman numerals.
+\usepackage{apacite} % Use APA version 6 style referencing
+\usepackage{booktabs} % Used to enhance the appearance of tables.
+\usepackage{array} % Used to center contents of a table column when specifying the width.
+
+\usepackage{caption} % Used to customize the placemnt of captions for floats (fig & table) properly
+\captionsetup[table]{skip=5pt}
+
+\usepackage{rotating} % Used to rotate table sideways.
+\usepackage{multirow} % Used to have table rows span multiple rows
+\usepackage{csquotes} % Used for adding inline and advanced quotations.
+\usepackage{textcomp} % Used for the copyright symbol
+
+\usepackage{listings} % Used for listing code samples. NOTE: You can custom create a colour pallete for this with definecolor, lstdefinestyle, and lstset.
+\usepackage{pdfpages} % Used for appending published papers to the Appendix
+
+% In case of problems: PDF Pages also loads graphicx: https://tex.stackexchange.com/a/401033
+\usepackage{graphicx} % For including graphics N.B. pdftex graphics driver; used to resizing tables and making them landscape layout.
+\graphicspath{ {imgs/} {../imgs/} }
+
+% =============================================================================================================
+% CREATING THE ABBREVIATIONS PAGE
+% =============================================================================================================
+
+\usepackage{longtable} % Required for tables that span multiple pages (used in the symbols, abbreviations and physical constants pages)
+
+\newenvironment{abbreviations}[1]
+    {
+    	\begin{longtable}{#1}
+    }
+    {
+        \end{longtable}
+    % \addtocounter{table}{-1} % Don't count this table as one of the document tables
+    }
+
+% =============================================================================================================
+    
+% Finally, we'll use \endinput to indicate that LaTeX can stop reading this file. LaTeX will ignore anything after this line.
+\endinput
